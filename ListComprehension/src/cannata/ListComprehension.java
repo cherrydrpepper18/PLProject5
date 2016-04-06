@@ -38,25 +38,25 @@ public class ListComprehension {
 
             {"15","Hardwick","Elaine","hardwiem","7-Feb-92","","Stock Clerk","1400","0.0","41","6"},
 
-            {16,"Brown","George","browngw","8-Mar-90","","Stock Clerk",940,0.0,41,6},
+            {"16","Brown","George","browngw","8-Mar-90","","Stock Clerk","940","0.0","41","6"},
 
-            {17,"Washington","Thomas","washintl","9-Feb-91","","Stock Clerk",1200,0.0,42,7},
+            {"17","Washington","Thomas","washintl","9-Feb-91","","Stock Clerk","1200","0.0","42","7"},
 
-            {18,"Patterson","Donald","patterdv","6-Aug-91","","Stock Clerk",795,0.0,42,7},
+            {"18","Patterson","Donald","patterdv","6-Aug-91","","Stock Clerk","795","0.0","42","7"},
 
-            {19,"Bell","Alexander","bellag","26-May-91","","Stock Clerk",850,0.0,43,8},
+            {"19","Bell","Alexander","bellag","26-May-91","","Stock Clerk","850","0.0","43","8"},
 
-            {20,"Gantos","Eddie","gantosej","30-Nov-90","","Stock Clerk",800,0.0,44,9},
+            {"20","Gantos","Eddie","gantosej","30-Nov-90","","Stock Clerk","800","0.0","44","9"},
 
-            {21,"Stephenson","Blaine","stephebs","17-Mar-91","","Stock Clerk",860,0.0,45,10},
+            {"21","Stephenson","Blaine","stephebs","17-Mar-91","","Stock Clerk","860","0.0","45","10"},
 
-            {22,"Chester","Eddie","chesteek","30-Nov-90","","Stock Clerk",800,0.0,44,9},
+            {"22","Chester","Eddie","chesteek","30-Nov-90","","Stock Clerk","800","0.0","44","9"},
 
-            {23,"Pearl","Roger","pearlrg","17-Oct-90","","Stock Clerk",795,0.0,34,9},
+            {"23","Pearl","Roger","pearlrg","17-Oct-90","","Stock Clerk","795","0.0","34,9"},
 
-            {24,"Dancer","Bonnie","dancerbw","17-Mar-91","","Stock Clerk",860,0.0,45,7},
+            {"24","Dancer","Bonnie","dancerbw","17-Mar-91","","Stock Clerk","860","0.0","45,7"},
 
-            {25,"Schmitt","Sandra","schmitss","9-May-91","","Stock Clerk",1100,0.0,45,8}
+            {"25","Schmitt","Sandra","schmitss","9-May-91","","Stock Clerk","1100","0.0","45,8"}
 
     };
     // department directory
