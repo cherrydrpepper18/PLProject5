@@ -16,27 +16,27 @@ public class ListComprehension {
 
             {"4","Quentin","Mark","quentiml","7-Apr-90","","VP. Finance","2450","0.0","10","1"},
 
-            {"5","Roper","Joseph","roperjm","4-Mar-90","","VP. Administration","2550",0.0,50,1"},
+            {"5","Roper","Joseph","roperjm","4-Mar-90","","VP. Administration","2550","0.0","50","1"},
 
-            {6,"Brown","Molly","brownmr","18-Jan-91","","Warehouse Manager",1600,0.0,41,2},
+            {"6","Brown","Molly","brownmr","18-Jan-91","","Warehouse Manager","1600","0.0","41","2"},
 
-            {7,"Hawkins","Roberta","hawkinrt","14-May-90","","Warehouse Manager",1650,0.0,42,2},
+            {"7","Hawkins","Roberta","hawkinrt","14-May-90","","Warehouse Manager","1650","0.0","42","2"},
 
-            {8,"Burns","Ben","burnsba","7-Apr-90","","Warehouse Manager",1500,0.0,43,2},
+            {"8","Burns","Ben","burnsba","7-Apr-90","","Warehouse Manager","1500","0.0","43","2"},
 
-            {9,"Catskill","Antoinette","catskiaw","9-Feb-92","","Warehouse Manager",1700,0.0,44,2},
+            {"9","Catskill","Antoinette","catskiaw","9-Feb-92","","Warehouse Manager","1700","0.0","44","2"},
 
-            {10,"Jackson","Marta","jacksomt","27-Feb-91","","Warehouse Manager",1507,0.0,45,2},
+            {"10","Jackson","Marta","jacksomt","27-Feb-91","","Warehouse Manager","1507","0.0","45","2"},
 
-            {11,"Henderson","Colin","hendercs","14-May-90","","Sales Representative",1400,10.0,31,3},
+            {"11","Henderson","Colin","hendercs","14-May-90","","Sales Representative","1400","10.0","31,3"},
 
-            {12,"Gilson","Sam","gilsonsj","18-Jan-92","","Sales Representative",1490,12.5,32,3},
+            {"12","Gilson","Sam","gilsonsj","18-Jan-92","","Sales Representative","1490","12.5","32","3"},
 
-            {13,"Sanders","Jason","sanderjk","18-Jan-91","","Sales Representative",1515,10.0,33,3},
+            {"13","Sanders","Jason","sanderjk","18-Jan-91","","Sales Representative","1515","10.0","33","3"},
 
-            {14,"Dameron","Andre","dameroap","9-Oct-91","","Sales Representative",1450,17.5,35,3},
+            {"14","Dameron","Andre","dameroap","9-Oct-91","","Sales Representative","1450","17.5","35","3"},
 
-            {15,"Hardwick","Elaine","hardwiem","7-Feb-92","","Stock Clerk",1400,0.0,41,6},
+            {"15","Hardwick","Elaine","hardwiem","7-Feb-92","","Stock Clerk","1400","0.0","41","6"},
 
             {16,"Brown","George","browngw","8-Mar-90","","Stock Clerk",940,0.0,41,6},
 
