@@ -59,35 +59,6 @@ public class ListComprehension {
             {"25","Schmitt","Sandra","schmitss","9-May-91","","Stock Clerk","1100","0.0","45,8"}
 
     };
-    // department directory
-    private Array s_dept = {
-            {"ID","NAME","REGION_ID"},
-
-            {10,"Finance",1},
-
-            {31,"Sales",1},
-
-            {32,"Sales",2},
-
-            {33,"Sales",3},
-
-            {34,"Sales",4},
-
-            {35,"Sales",5},
-
-            {41,"Operations",1},
-
-            {42,"Operations",2},
-
-            {43,"Operations",3},
-
-            {44,"Operations",4},
-
-            {45,"Operations",5},
-
-            {50,"Administration",1}
-
-            }
 
     public static void main(String{] args) {
         ArrayList<List<Object>> emp = new ArrayList<List<Object>>();
