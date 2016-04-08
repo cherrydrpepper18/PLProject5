@@ -87,30 +87,21 @@ public class ListComprehension {
         //List<String> list = emp.stream()
         //        .collect(Collectors.toList());
 
-        /**emp.stream()
-                .map(a -> {return a.get(9);}).distinct()
+        // select dept_id, avg(salary) from s_emp, group by dept_id
+        emp.stream()
+                .map(a -> {return Integer.parseInt(a.get(9).toString());}).distinct()
                 .sorted((x,y) -> Integer.compare(Integer.parseInt(x.toString()), Integer.parseInt(y.toString())))
-                .forEach(n -> System.out.println(Integer.parseInt(n.toString()) +
-                        (v -> v.stream().reduce(0, (e, r) -> e + r) / v.size()))
-                        .apply(emp.stream()
-                        .filter(g -> {return Integer.parseInt(g.get(9).toString()) == Integer.parseInt(n.toString());})
-                        .map(a -> {return Integer.parseInt(a.get(7).toString());}))
-
-
-                ));*/
-       /** List<Integer> blab = Arrays.asList(31,32,33,34,35,41,42,43,44,45,50);
-        blab.stream().forEach(n -> System.out.println(Integer.parseInt(emp.stream()
-                .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
-                .map(q -> {return Integer.parseInt(q.get(7).toString());})
-                .reduce((b,v) -> b + v).toString()) /
-                Integer.parseInt(emp.stream()
+                .forEach(n -> System.out.println(n.toString() + " " + Integer.toString(emp.stream()
                         .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
-                        .map(q -> 1)
-                        .reduce((b,v) -> b + v).toString())
+                        .map(q -> {return Integer.parseInt(q.get(7).toString());})
+                        .reduce((b,v) -> b + v).get() /
+                        emp.stream()
+                                .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
+                                .map(q -> 1)
+                                .reduce((b,v) -> (b + v)).get())));
 
-
-        ));''*/
-
+        // select dept_id, avg(salary) from s_emp, group by dept_id having avg(salary) < 1500
+        //emp.stream().
     }
 }
 
