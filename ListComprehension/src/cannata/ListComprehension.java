@@ -64,8 +64,8 @@ public class ListComprehension {
         emp.add(e1); emp.add(e2); emp.add(e3); emp.add(e4);emp.add(e5);emp.add(e6);emp.add(e7);emp.add(e8);emp.add(e9);emp.add(e10);
         emp.add(e11);emp.add(e12);emp.add(e13);emp.add(e14);emp.add(e15);emp.add(e16);emp.add(e17);emp.add(e18);emp.add(e19);emp.add(e20);
         emp.add(e21);emp.add(e22);emp.add(e23);emp.add(e24);emp.add(e25);
-        emp.stream()
-                .forEach(n -> n.forEach(e -> { System.out.println(e); }));
+        //emp.stream()
+        //        .forEach(n -> n.forEach(e -> { System.out.println(e); }));
 
         // select last_name, first_name, title, salary from emp where salary > 1500 and dept_id > 40 order by last_name
         emp.stream()
@@ -88,12 +88,27 @@ public class ListComprehension {
 
 
                 ));*/
-        List<Object> n = Arrays.asList(10,31,32,33,34,35,41,42,43,44,45,50);
+        List<Integer> blab = Arrays.asList(31,32,33,34,35,41,42,43,44,45,50);
+        blab.stream().forEach(n -> System.out.println(Integer.parseInt(emp.stream()
+                .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
+                .map(q -> {return Integer.parseInt(q.get(7).toString());})
+                .reduce((b,v) -> b + v).toString()) /
+                Integer.parseInt(emp.stream()
+                        .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
+                        .map(q -> 1)
+                        .reduce((b,v) -> b + v).toString())
 
-        emp.stream()
-                .filter(g -> {return Integer.parseInt(g.get(9).toString()) == Integer.parseInt(n.toString());})
-                .map(a -> {return Integer.parseInt(a.get(7).toString());})
-                .forEach(m -> System.out.println(m));
+
+        ));
 
     }
 }
+
+
+
+
+
+
+
+
+
