@@ -105,6 +105,7 @@ public class ListComprehension {
         // select dept_id, avg(salary) from s_emp, group by dept_id having avg(salary) < 1500
         System.out.println("\nselect dept_id, avg(salary) from s_emp, group by dept_id having avg(salary) > 1500");
         emp.stream()
+                //.sorted((x,y) -> Integer.compare(Integer.parseInt(x.get(9).toString()), (Integer.parseInt(y.get(9).toString()))))
                 .collect(
                         Collectors.groupingBy(
                                 a -> Integer.parseInt(a.get(9).toString()),
@@ -112,9 +113,28 @@ public class ListComprehension {
                                         b -> Integer.parseInt(b.get(7).toString())
                                 )
                         ))
-                .sorted((e1, e2) -> Integer.compare(e1, e2))
-                .forEach((c, d) -> System.out.println(Integer.toString(c) + " " + d));
+                .entrySet()
+                .stream()
+                .filter(c -> {return c.getValue() > 1500;})
+                .sorted((x, y) -> x.getKey().compareTo(y.getKey()))
+                .forEachOrdered(c -> System.out.println(c.getKey() + " " + c.getValue()));
 
+        // select first name, last name, title, salary from emp, filters highest salary by title, orders by salary desc
+        emp.stream()
+                .sorted((x,y) -> Integer.compare(Integer.parseInt(y.get(7).toString()), Integer.parseInt(x.get(7).toString())))
+                .map(a -> a.get(6).toString())
+                .distinct()
+                .forEach(v -> System.out.println(
+                        emp.stream()
+                                .filter(n -> n.get(6).toString().equals(v))
+                                .min((w,q) -> Integer.compare((Integer)q.get(7), (Integer)w.get(7) ))
+                                .map(b -> b.get(2).toString() + " " + b.get(1).toString()).get()
+                                + " " + v + " " +
+                                emp.stream()
+                                        .filter(n -> n.get(6).toString().equals(v))
+                                        .map(a -> Integer.parseInt(a.get(7).toString()))
+                                        .max((c,d) -> Integer.compare(c,d)).get()
+                ));
 
     }
 }
