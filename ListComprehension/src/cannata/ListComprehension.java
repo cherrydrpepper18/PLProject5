@@ -88,20 +88,34 @@ public class ListComprehension {
         //        .collect(Collectors.toList());
 
         // select dept_id, avg(salary) from s_emp, group by dept_id
+        System.out.println("\nselect dept_id, avg(salary) from s_emp, group by dept_id");
         emp.stream()
-                .map(a -> {return Integer.parseInt(a.get(9).toString());}).distinct()
+                .map(a -> {return Integer.parseInt(a.get(9).toString());})
+                .distinct()
                 .sorted((x,y) -> Integer.compare(Integer.parseInt(x.toString()), Integer.parseInt(y.toString())))
                 .forEach(n -> System.out.println(n.toString() + " " + Integer.toString(emp.stream()
                         .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
                         .map(q -> {return Integer.parseInt(q.get(7).toString());})
                         .reduce((b,v) -> b + v).get() /
-                        emp.stream()
+                        (int)emp.stream()
                                 .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
-                                .map(q -> 1)
-                                .reduce((b,v) -> (b + v)).get())));
+                                .count()
+                                )));
 
         // select dept_id, avg(salary) from s_emp, group by dept_id having avg(salary) < 1500
-        //emp.stream().
+        System.out.println("\nselect dept_id, avg(salary) from s_emp, group by dept_id having avg(salary) > 1500");
+        emp.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                a -> Integer.parseInt(a.get(9).toString()),
+                                Collectors.averagingInt(
+                                        b -> Integer.parseInt(b.get(7).toString())
+                                )
+                        ))
+                .sorted((e1, e2) -> Integer.compare(e1, e2))
+                .forEach((c, d) -> System.out.println(Integer.toString(c) + " " + d));
+
+
     }
 }
 
