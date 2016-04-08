@@ -67,12 +67,22 @@ public class ListComprehension {
         //emp.stream()
         //        .forEach(n -> n.forEach(e -> { System.out.println(e); }));
 
+        // select last_name, first_name, username, start date from emp where username starts with b
+        System.out.println("select last_name, first_name, username, start date from emp where username starts with b");
+        emp.stream()
+                .filter(n -> {return n.get(3).toString().substring(0,1).equals("b");})
+                .forEach(e -> System.out.println(e.get(1).toString() + ", " + e.get(2).toString() + ", " + e.get(3).toString() + ", " + e.get(4).toString()));
+
+        System.out.println();
+
+
         // select last_name, first_name, title, salary from emp where salary > 1500 and dept_id > 40 order by last_name
+        System.out.println("select last_name, first_name, title, salary from emp where salary > 1500 and dept_id > 40 order by last_name");
         emp.stream()
                 .filter(n -> {return Integer.parseInt(n.get(7).toString()) > 1500;})
                 .filter(n -> {return Integer.parseInt(n.get(9).toString()) > 40;})
                 .sorted((x, y) -> x.get(1).toString().compareTo(y.get(1).toString()))
-                .forEach(e -> System.out.println(e.get(1).toString() + " " + e.get(2).toString() + " " + e.get(6).toString() + " " + e.get(7).toString()));
+                .forEach(e -> System.out.println(e.get(1).toString() + ", " + e.get(2).toString() + ", " + e.get(6).toString() + ", " + e.get(7).toString()));
 
         //List<String> list = emp.stream()
         //        .collect(Collectors.toList());
@@ -88,7 +98,7 @@ public class ListComprehension {
 
 
                 ));*/
-        List<Integer> blab = Arrays.asList(31,32,33,34,35,41,42,43,44,45,50);
+       /** List<Integer> blab = Arrays.asList(31,32,33,34,35,41,42,43,44,45,50);
         blab.stream().forEach(n -> System.out.println(Integer.parseInt(emp.stream()
                 .filter(a -> Integer.parseInt(a.get(9).toString()) == n)
                 .map(q -> {return Integer.parseInt(q.get(7).toString());})
@@ -99,7 +109,7 @@ public class ListComprehension {
                         .reduce((b,v) -> b + v).toString())
 
 
-        ));
+        ));''*/
 
     }
 }
