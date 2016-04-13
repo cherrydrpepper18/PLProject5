@@ -7,13 +7,13 @@ Data 1.0
 Data 2.0
 """
 
-tokens = ('HEADER1', 'NAME', 'DATA', 'INTEGER', 'NEG')
+tokens = ('SUMLEV', 'NAME', 'INTEGER', 'SIGN')
 literals = ['.', ',']
 
 # Tokens
-t_HEADER1  = r'SUMLEV[ -~]+'
-t_NAME     = r'[A-Za-z]*'
-t_NEG      = r'.*[0-9]*'
+t_SUMLEV  = r'^SUMLEV.*'
+t_NAME    = r'[A-Za-z]+'
+t_SIGN    = r'[-]'
 
 def t_INTEGER(t):
     r'\d+'
@@ -45,33 +45,28 @@ global time_step
 time_step = 0
 
 def p_start(t):
-    '''start : HEADER1
-             | NAME
-             | DATA float
+    '''start : SUMLEV
+             | data
+             | INTEGER
+             | SIGN INTEGER
     '''
     if len(t) > 1: #This matches the third line in the parser rule, i.e., | DATA float
-        print ("Saw a ", t[2], "_~_")
+        print ("Saw a ", str(t[1]), "_~_")
+
+def p_number(t):
+    '''number : INTEGER
+              | SIGN INTEGER'''
+
+    if len(t) > 2:
+        t[0] = str(t[1]) + str(t[2])
+    else:
+        t[0] = str(t[1])
 
 def p_data(t):
-    'data : INTEGER "," INTEGER "," INTEGER "," INTEGER "," NAME "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER "," INTEGER'
+    'data : number "," number "," number "," number "," NAME "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number'
 
+    # prints the state name 
     print "Saw a line with: " + str(t[4]) + str(t[12])
-
-def line_writer(t):
-
-    t_string = ""
-    for i in range(1, 92):
-        t_string += "str(t[i])"
-
-    return t_string
-
-def p_float(t):
-    'float : INTEGER "." INTEGER'
-    t[0] =  str(t[1]) + str(t[2]) + str(t[3])
-
-def p_empty(t):
-    'empty: '
-    pass
 
 def p_error(t):
     if t == None:
