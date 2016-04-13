@@ -7,13 +7,14 @@ Data 1.0
 Data 2.0
 """
 
-tokens = ('SUMLEV', 'NAME', 'INTEGER', 'SIGN')
+tokens = ('SUMLEV', 'NAME', 'INTEGER', 'SIGN', 'X')
 literals = ['.', ',']
 
 # Tokens
-t_SUMLEV  = r'^SUMLEV.*'
-t_NAME    = r'[A-Za-z]+'
+t_SUMLEV  = r'SUMLEV,[ -~]+'
+t_NAME    = r'[A-WYZa-z ]+'
 t_SIGN    = r'[-]'
+t_X       = r'X'
 
 def t_INTEGER(t):
     r'\d+'
@@ -25,7 +26,7 @@ def t_INTEGER(t):
     return t
 
 # Ignored characters
-t_ignore = " \r"
+t_ignore = "\r"
 
 def t_newline(t):
     r'\n+'
@@ -45,34 +46,40 @@ global time_step
 time_step = 0
 
 def p_start(t):
-    '''start : SUMLEV
-             | data
-             | INTEGER
-             | SIGN INTEGER
+    '''start : data
+             | SUMLEV
+
     '''
-    if len(t) > 1: #This matches the third line in the parser rule, i.e., | DATA float
-        print ("Saw a ", str(t[1]), "_~_")
+
 
 def p_number(t):
     '''number : INTEGER
-              | SIGN INTEGER'''
+              | SIGN INTEGER
+              | float
+              | SIGN float
+              | X'''
 
     if len(t) > 2:
         t[0] = str(t[1]) + str(t[2])
     else:
         t[0] = str(t[1])
+def p_float(t):
+    'float : INTEGER "." INTEGER'
+    t[0] =  str(t[1]) + str(t[2]) + str(t[3])
 
 def p_data(t):
     'data : number "," number "," number "," number "," NAME "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number'
 
     # prints the state name 
-    print "Saw a line with: " + str(t[4]) + str(t[12])
+    print ( str(t[9] + ":").ljust(22) +  str(t[11]).ljust(10))
 
 def p_error(t):
     if t == None:
         print("Syntax error at '%s'" % t)
+
     else:
         print("Syntax error at '%s'" % t.value)
+        print(t.type)
 
 import ply.yacc as yacc   # ply.yacc comes from the ply folder in the PLY download.
 parser = yacc.yacc()
