@@ -120,6 +120,9 @@ public class ListComprehension {
                 .forEachOrdered(c -> System.out.println(c.getKey() + " " + c.getValue()));
 
         // select first name, last name, title, salary from emp, filters highest salary by title, orders by salary desc
+        System.out.println("\ncreate view Salaries as select title, max(salary) as 'maxsalary' from emp groupby title");
+        System.out.println("select firstname, lastname, title, salary from emp inner join Salaries on emp.title = Salaries.title");
+        System.out.println("where salary = maxsalary");
         emp.stream()
                 .sorted((x,y) -> Integer.compare(Integer.parseInt(y.get(7).toString()), Integer.parseInt(x.get(7).toString())))
                 .map(a -> a.get(6).toString())

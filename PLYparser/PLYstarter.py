@@ -7,14 +7,17 @@ Data 1.0
 Data 2.0
 """
 
-tokens = ('SUMLEV', 'NAME', 'INTEGER', 'SIGN', 'X')
+# use the following command to run
+# cat test.csv | python PLYstarter.py
+
+tokens = ('SUMLEV', 'NAME', 'INTEGER', 'SIGN')
 literals = ['.', ',']
 
 # Tokens
 t_SUMLEV  = r'SUMLEV,[ -~]+'
-t_NAME    = r'[A-WYZa-z ]+'
+t_NAME    = r'[A-Za-z ]+'
 t_SIGN    = r'[-]'
-t_X       = r'X'
+
 
 def t_INTEGER(t):
     r'\d+'
@@ -48,6 +51,7 @@ time_step = 0
 def p_start(t):
     '''start : data
              | SUMLEV
+             | lastrow
 
     '''
 
@@ -57,7 +61,7 @@ def p_number(t):
               | SIGN INTEGER
               | float
               | SIGN float
-              | X'''
+              '''
 
     if len(t) > 2:
         t[0] = str(t[1]) + str(t[2])
@@ -71,6 +75,12 @@ def p_data(t):
     'data : number "," number "," number "," number "," NAME "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number'
 
     # prints the state name 
+    print ( str(t[9] + ":").ljust(22) +  str(t[11]).ljust(10))
+
+def p_lastrow(t):
+    'lastrow : number "," NAME "," NAME "," number "," NAME "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number "," number'
+
+    # prints the state name
     print ( str(t[9] + ":").ljust(22) +  str(t[11]).ljust(10))
 
 def p_error(t):
